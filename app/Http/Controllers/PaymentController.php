@@ -82,20 +82,20 @@ class PaymentController extends Controller
                 // $transaction_reference = date("YmdHis") . rand(1, 100);
                 // $yoAPI->set_external_reference($transaction_reference);
                 // $response = $yoAPI->ac_deposit_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
-                $disburse = $this->ac_withdraw_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
+                $response = $this->ac_withdraw_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
                 // dd($disburse);
 
                 //dd($response);
 
-                // if ($response['Status'] == 'OK') {
-                //     $status = 1;
-                //     $res = $response['Status'];
-                // } else {
-                //     $status = 0;
-                //     $res = $response['Status'];
-                // }
+                if ($response['Status'] == 'OK') {
+                    $status = 1;
+                    $res = $response['Status'];
+                } else {
+                    $status = 0;
+                    $res = $response['Status'];
+                }
 
-                // $this->save_payment($rowData, $status, $res);
+                $this->save_payment($rowData, $status, $res);
             }
         }
 
