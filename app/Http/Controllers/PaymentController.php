@@ -51,6 +51,7 @@ class PaymentController extends Controller
                 $yoAPI = new \YoAPI($username, $password, $mode);
                 $transaction_reference = date("YmdHis") . rand(1, 100);
                 $yoAPI->set_external_reference($transaction_reference);
+                // return 
                 $response = $yoAPI->ac_deposit_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
 
                 dd($response);
