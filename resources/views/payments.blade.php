@@ -16,7 +16,7 @@
                     <form action="{{ route('payments.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file" class="bg-gray-200 p-1 rounded">
-                        <button type="submit" class="bg-green-600 p-2 rounded">Import CSV</button>
+                        <button type="submit" class="bg-green-600 text-white p-2 rounded">Import CSV</button>
                     </form>
                 </div>
             </div>
