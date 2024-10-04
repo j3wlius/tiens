@@ -82,7 +82,13 @@ class PaymentController extends Controller
                 // $transaction_reference = date("YmdHis") . rand(1, 100);
                 // $yoAPI->set_external_reference($transaction_reference);
                 // $response = $yoAPI->ac_deposit_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
-                $response = $this->ac_withdraw_funds($rowData['contact'], $rowData['net_pay'], 'Payment');
+                
+                $rate = config('services.yo_pay.rate');
+                $pay = $rowData['net_pay'];
+                $net_pay = $rate * $pay;
+                // dd($net_pay );
+
+                $response = $this->ac_withdraw_funds($rowData['contact'], $net_pay, 'Payment');
                 // dd($disburse);
 
                 //dd($response);
