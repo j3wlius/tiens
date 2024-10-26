@@ -22,4 +22,7 @@ Route::middleware([
 
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments');
     Route::post('/payments/import', [PaymentController::class, 'import'])->name('payments.import');
+    Route::get('/payments/category', [PaymentController::class, 'category'])->name('payments.category');
+    Route::post('/payments/add-category', [PaymentController::class, 'addcategory'])->name('payments.add-category');
+
 });

@@ -26,6 +26,13 @@
                         {{ __('Payments') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
+                   
+                    <x-nav-link href="{{ route('payments.category') }}" :active="request()->routeIs('payments.category')">
+                        <i class="bi bi-wallet text-black"></i>
+                        {{ __('Categories') }}
+                    </x-nav-link>
+                </div>
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
                     <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
