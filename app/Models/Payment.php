@@ -9,5 +9,5 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dist_no','dist_name','shop_id','net_pay','contacts','status','error'];
+    protected $fillable = ['dist_no','dist_name','shop_id','net_pay','contacts', 'category','month_of_pay', 'status','description'];
 }

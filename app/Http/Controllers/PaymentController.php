@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // composer require box/spout
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 use App\Models\Payment;
+use App\Models\Category;
 use SimpleXMLElement;
 
 use Exception;
@@ -57,12 +58,17 @@ class PaymentController extends Controller
             'file' => 'required|mimes:xlsx,xls',
         ]);
 
+        $category = $request->input('category');
+        $month_of_pay = $request->input('month_of_pay');
         $file = $request->file('file');
 
         $reader = ReaderEntityFactory::createXLSXReader();
         $reader->open($file->path());
 
         $headerRow = null;
+
+        // $month_of_pay = '2024-10-01';
+        // $category = 1001;
 
         foreach ($reader->getSheetIterator() as $sheet) {
             foreach ($sheet->getRowIterator() as $rowIndex => $row) {
@@ -73,7 +79,7 @@ class PaymentController extends Controller
                     continue;
                 }
 
-                $rowData = array_combine($headerRow, $rowData);
+                $rowData = array_combine($headerRow, $rowData); //dd($rowData);
                 // $username = config('services.yo_pay.username');
                 // $password = config('services.yo_pay.password');
                 // $mode = "production";
@@ -101,13 +107,19 @@ class PaymentController extends Controller
                     $res = $response['Status'];
                 }
 
-                $this->save_payment($rowData, $status, $res);
+                $status_message = $response['StatusMessage'];
+
+                //dd($response);
+
+              
+
+                $this->save_payment($rowData, $status, $status_message, $category, $month_of_pay);
             }
         }
 
         $reader->close();
 
-        return redirect()->back()->with('success', 'Payments processed successfully.');
+        return redirect()->back()->with('success', $status_message);
     }
 
     
@@ -252,7 +264,7 @@ class PaymentController extends Controller
     }
     
 
-    function save_payment($rowData, $status, $res) {
+    function save_payment($rowData, $status, $status_message, $category, $month_of_pay) {
         $rate = config('services.yo_pay.rate');
         $pay = $rowData['net_pay'];
         $net_pay = $rate * $pay;
@@ -263,8 +275,10 @@ class PaymentController extends Controller
             'shop_id' => $rowData['shop_id'],
             'net_pay' => $net_pay,
             'contacts' => $rowData['contact'],
+            'category' => $category,
+            'month_of_pay' => $month_of_pay,
             'status' => $status,
-            'error' => $res,
+            'description' => $status_message,
         ]);
     }
 
@@ -314,5 +328,33 @@ class PaymentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function category()
+    {
+       
+        // Pass the data to the view using compact
+        return view('category.index');
+    }
+
+    public function addcategory()
+    {
+        $request = request(); //dd($request); 
+        
+        // $request->validate([
+        //     'category' => 'required|in:1,2,3',
+        // ], [
+        //     'category.required' => 'Please select a category.',
+        // ]);
+
+        $categoryData = [
+            'name' => $request['name'],            
+        ];
+     
+
+        if ($categoryData != null) {                            
+            Category::create(array_merge($categoryData));
+            return redirect('/payments/category')->with('success','Category Created successfully');
+        }  
     }
 }
