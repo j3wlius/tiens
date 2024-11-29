@@ -35,18 +35,34 @@
                 </div>
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
-                    <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
+                    <x-nav-link href="{{ route('expenses.index') }}" :active="request()->routeIs('expenses.*')">
                         <i class="bi bi-graph-up text-black"></i>
                         {{ __('Expenses') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
-                    <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
-                        <i class="bi bi-grid text-black"></i>
+                    <x-nav-link href="{{ route('expense-types.index') }}" :active="request()->routeIs('expense-types.*')">
+                        <i class="bi bi-graph-up text-black"></i>
+                        {{ __('Expense Types') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
+                    <x-nav-link href="{{ route('distributors.index') }}" :active="request()->routeIs('distributors.*')">
+                        <i class="bi bi-people text-black"></i>
                         {{ __('Distributors') }}
                     </x-nav-link>
                 </div>
+
+                @role('super-admin')
+                <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
+                    <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                        <i class="bi bi-shield-lock text-black"></i>
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                </div>
+                @endrole
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
                     <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
@@ -64,12 +80,12 @@
                 </div>
 
 
-                <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
+                <!-- <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
                     <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
                         <i class="bi bi-boxes text-black"></i>
                         {{ __('Stock Management') }}
                     </x-nav-link>
-                </div>
+                </div> -->
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
                     <x-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">

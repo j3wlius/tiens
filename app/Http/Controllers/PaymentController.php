@@ -242,7 +242,7 @@ class PaymentController extends Controller
             return $result;
         }
     
-        protected function get_xml_response($xml)
+    protected function get_xml_response($xml)
     {
         
         $soap_do = curl_init();
