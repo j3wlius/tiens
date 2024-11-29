@@ -36,15 +36,8 @@
 
                 <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
                     <x-nav-link href="{{ route('expenses.index') }}" :active="request()->routeIs('expenses.*')">
-                        <i class="bi bi-graph-up text-black"></i>
+                        <i class="bi bi-receipt text-black"></i>
                         {{ __('Expenses') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-2 sm:-my-px sm:ms-5 sm:flex">
-                    <x-nav-link href="{{ route('expense-types.index') }}" :active="request()->routeIs('expense-types.*')">
-                        <i class="bi bi-graph-up text-black"></i>
-                        {{ __('Expense Types') }}
                     </x-nav-link>
                 </div>
 

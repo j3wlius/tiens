@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\ExpenseType;
 
 class Expense extends Model
 {
@@ -13,7 +12,7 @@ class Expense extends Model
 
     protected $fillable = [
         'date',
-        'expense_type_id',
+        'expense_type',
         'received_by',
         'description',
         'amount',
@@ -28,10 +27,5 @@ class Expense extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function expenseType()
-    {
-        return $this->belongsTo(ExpenseType::class);
     }
 }

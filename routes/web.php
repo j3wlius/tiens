@@ -32,8 +32,6 @@ Route::middleware([
 
     // Expense routes
     Route::resource('expenses', ExpenseController::class);
-    Route::resource('expense-types', ExpenseTypeController::class);
-    Route::patch('/expense-types/{expenseType}/toggle', [ExpenseTypeController::class, 'toggle'])->name('expense-types.toggle');
     Route::resource('distributors', DistributorController::class);
 
     // Role management routes (only accessible by super-admin)

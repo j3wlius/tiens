@@ -28,18 +28,10 @@
 
                             <!-- Expense Type -->
                             <div>
-                                <x-label for="expense_type_id" value="{{ __('Expense Type') }}" />
-                                <select id="expense_type_id" name="expense_type_id" required
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full">
-                                    <option value="">Select Expense Type</option>
-                                    @foreach($expenseTypes as $type)
-                                        <option value="{{ $type->id }}" 
-                                            {{ (isset($expense) && $expense->expense_type_id == $type->id) || old('expense_type_id') == $type->id ? 'selected' : '' }}>
-                                            {{ $type->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('expense_type_id')
+                                <x-label for="expense_type" value="{{ __('Expense Type') }}" />
+                                <x-input id="expense_type" type="text" class="block mt-1 w-full" name="expense_type" 
+                                    value="{{ isset($expense) ? $expense->expense_type : old('expense_type') }}" required />
+                                @error('expense_type')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>

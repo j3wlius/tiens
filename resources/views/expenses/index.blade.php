@@ -36,7 +36,7 @@
                                 @foreach($expenses as $expense)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $expense->date->format('Y-m-d') }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $expense->expenseType->name }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ $expense->expense_type }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $expense->received_by }}</td>
                                         <td class="px-6 py-4">{{ $expense->description }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ number_format($expense->amount, 2) }}</td>
