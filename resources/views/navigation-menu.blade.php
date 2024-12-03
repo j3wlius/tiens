@@ -48,7 +48,7 @@
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')" class="nav-item">
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-people-fill"></i>
                         {{ __('Users') }}
                     </x-nav-link>
                 </div>
