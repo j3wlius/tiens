@@ -5,3 +5,33 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+    .nav-container {
+        @apply flex justify-between items-center;
+    }
+    
+    .nav-logo {
+        @apply hover:opacity-75 transition-opacity duration-150;
+    }
+    
+    .nav-links {
+        @apply items-center;
+    }
+    
+    .nav-item {
+        @apply flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700;
+    }
+    
+    .nav-item i {
+        @apply text-lg opacity-75;
+    }
+    
+    .nav-item.active {
+        @apply bg-gray-100 dark:bg-gray-700/50;
+    }
+    
+    .nav-item.active i {
+        @apply opacity-100;
+    }
+}

@@ -332,9 +332,12 @@ class PaymentController extends Controller
 
     public function category()
     {
-       
-        // Pass the data to the view using compact
-        return view('category.index');
+        try {
+            $categories = Category::latest()->get();
+            return view('category.index', compact('categories'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error loading categories: ' . $e->getMessage());
+        }
     }
 
     public function addcategory()

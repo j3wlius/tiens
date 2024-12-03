@@ -1,0 +1,26 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#8685
+    [34mall[39m: [
+      [34;4mSpatie\Permission\Models\Role[39;24m {#8686
+        [34mid[39m: [35m1[39m,
+        [34mname[39m: "[32msuper-admin[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2024-11-30 16:03:35[39m",
+        [34mupdated_at[39m: "[32m2024-11-30 16:03:35[39m",
+      },
+      [34;4mSpatie\Permission\Models\Role[39;24m {#8687
+        [34mid[39m: [35m2[39m,
+        [34mname[39m: "[32mexpenses-manager[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2024-11-30 16:03:35[39m",
+        [34mupdated_at[39m: "[32m2024-11-30 16:03:35[39m",
+      },
+      [34;4mSpatie\Permission\Models\Role[39;24m {#8688
+        [34mid[39m: [35m3[39m,
+        [34mname[39m: "[32maccountant[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2024-11-30 16:03:36[39m",
+        [34mupdated_at[39m: "[32m2024-11-30 16:03:36[39m",
+      },
+    ],
+  }
+
